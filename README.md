@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Task Manager App
+A **React TypeScript** project for managing tasks and subtasks with features like **nested subtasks, delete with DFS, dark/light theme**, and **JSON server persistence**.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
+  **1.	Task Management** <br/>
+        o	Add, view, and delete tasks. <br/>
+        o	Each task has: <br/>
+            --	Title <br/>
+            --	Description <br/>
+            --	Type (Low, Medium, High) <br/>
+            --	Assigned To <br/>
+            --	Deadline <br/>
+            --	Creation Time <br/>
+  **2.	Subtask Management** <br/>
+        o	Create multiple levels of subtasks (nested). <br/>
+        o	Delete a subtask along with all its children using DFS. <br/>
+        o	Add subtasks dynamically under any task or subtask. <br/>
+  **3.	Bulk Selection** <br/>
+        o	Check multiple tasks using checkboxes. <br/>
+        o	Delete selected tasks together. <br/>
+  **4.	Theme Toggle** <br/>
+        o	Switch between dark and light mode. <br/>
+        o	Persist theme preference using Zustand with persist middleware. <br/>
+  **5.	JSON Server Integration** <br/>
+        o	Store tasks and subtasks in a JSON database. <br/>
+        o	Fetch tasks/subtasks on load. <br/>
+        o	Add and delete tasks/subtasks with server sync. <br/>
 
-Currently, two official plugins are available:
+# Key Concepts
+•	**Lifting State Up**: TaskForm sends task data to LandingPage. <br/>
+•	**Recursive Subtasks**: Nested subtasks handled using recursion. <br/>
+•	**DFS Deletion**: Delete a subtask and all children. <br/>
+•	**Persisted Theme**: Zustand + persist middleware saves dark/light preference. <br/>
+•	**Server Sync**: Fetch, add, and delete tasks/subtasks from JSON server. <br/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start JSON Server:
+```bash
+npx json-server --watch db.json --port 3001
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start React app:
+```bash
+npm run dev
 ```
+
+# Project Structure
+    src/
+    ├── components/
+    │   ├── TaskForm.tsx
+    │   ├── TaskCard.tsx
+    │   └── Subtask.tsx
+    ├── pages/
+    │   └── LandingPage.tsx
+    ├── services/
+    │   └── TaskService.ts
+    ├── store/
+    │   └── themeStore.ts
+    ├── types/
+    	   └── task.ts
+
+
