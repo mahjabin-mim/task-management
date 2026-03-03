@@ -42,6 +42,7 @@ export default function TaskFrom ({ onAddTask }: Props) {
     return (
         <form onSubmit={handleSubmit}>
             <input
+                className="form-input"
                 placeholder="Task Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -49,12 +50,14 @@ export default function TaskFrom ({ onAddTask }: Props) {
             />
 
             <input
+                className="form-input"
                 placeholder="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
 
             <select
+                className="form-input"
                 value={type}
                 onChange={(e) => setType(e.target.value as Priority)}
                 required
@@ -65,6 +68,7 @@ export default function TaskFrom ({ onAddTask }: Props) {
             </select>
 
             <input
+                className="form-input"
                 type="datetime-local"
                 placeholder="Date Time"
                 value={deadline}
@@ -73,6 +77,7 @@ export default function TaskFrom ({ onAddTask }: Props) {
             />
 
             <select
+                className="form-input"
                 value={assignedTo}
                 onChange={(e) => setAssignedTo(e.target.value)}
                 required

@@ -16,6 +16,7 @@ export default function SubTask ({ onAdd }: Props) {
     return (
         <form onSubmit={handleSubmit}>
             <input
+                className="subtask-card"
                 placeholder="Subtask title"
                 value={subTaskTitle}
                 onChange={(e) => setSubTaskTitle(e.target.value)}
